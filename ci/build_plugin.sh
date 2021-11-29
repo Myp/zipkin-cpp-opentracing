@@ -5,7 +5,6 @@ set -e
 #apt-get install --no-install-recommends --no-install-suggests -y \
 yum install -y \
                 build-essential \
-                cmake \
                 wget \
                 git \
                 ca-certificates
