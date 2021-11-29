@@ -108,11 +108,6 @@ public:
     return span_context_.id() != 0 && !span_context_.trace_id().empty();
   }
 
-  std::unique_ptr<SpanContext> Clone() const noexcept
-  {
-    return nullptr;
-  }
-
 private:
   zipkin::SpanContext span_context_;
   mutable std::mutex baggage_mutex_;
@@ -263,12 +258,6 @@ public:
   void Log(std::initializer_list<std::pair<string_view, Value>>
                fields) noexcept override {}
 
-  void Log(SystemTime timestamp, std::initializer_list<std::pair<string_view, Value>>
-               fields) noexcept override {}
-
-  void Log(SystemTime timestamp, const std::vector<std::pair<string_view, Value>>&
-               fields) noexcept override {}
-
   const ot::SpanContext &context() const noexcept override {
     return span_context_;
   }
@@ -408,9 +397,8 @@ makeZipkinOtTracer(const ZipkinOtTracerOptions &options,
 std::shared_ptr<ot::Tracer>
 makeZipkinOtTracer(const ZipkinOtTracerOptions &options) {
   auto reporter =
-      makeHttpReporter(options.collector_host.c_str(), options.collector_port, options.collector_endpoint.c_str(),
-                       options.collector_timeout, options.reporting_period,
-                       options.max_buffered_spans);
+      makeHttpReporter(options.collector_host.c_str(), options.collector_port,
+                       options.reporting_period, options.max_buffered_spans);
   return makeZipkinOtTracer(options, std::move(reporter));
 }
 } // namespace zipkin
