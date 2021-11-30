@@ -3,7 +3,7 @@
 set -e
 #apt-get update 
 #apt-get install --no-install-recommends --no-install-suggests -y \
-yum install -y \
+yum install -y libcurl-devel \
                 build-essential \
                 wget \
                 git \
