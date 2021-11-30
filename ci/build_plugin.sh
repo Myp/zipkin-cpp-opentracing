@@ -58,8 +58,10 @@ cd "${BUILD_DIR}"
 mkdir zipkin-cpp-opentracing && cd zipkin-cpp-opentracing
 cmake -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="${BUILD_DIR}" \
+      -DCURL_INCLUDE_DIRS="${BUILD_DIR}/include/" \
+      -DCURL_LIBRARY="${BUILD_DIR}/lib/" \
       -DBUILD_SHARED_LIBS=OFF \
-      -DBUILD_STATIC=OFF \
+      -DBUILD_STATIC=ON \
       -DBUILD_TESTING=OFF \
       -DBUILD_PLUGIN=ON \
       "${SRC_DIR}"
