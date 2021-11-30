@@ -2,7 +2,7 @@ version: 2
 jobs:
   bazel:
     docker:
-      - image: procellariums/opentracing-curl:nginx-plus-1.17.3
+      - image: procellariums/opentracing:nginx-plus-curl-1.17.3
     steps:
       - checkout
       - run: ./ci/install_dependencies.sh
@@ -10,7 +10,7 @@ jobs:
       - run: ./ci/do_ci.sh bazel.build
   plugin:
     docker:
-      - image: procellariums/opentracing-curl:nginx-plus-1.17.3
+      - image: procellariums/opentracing:nginx-plus-curl-1.17.3
     steps:
       - checkout
       - run: ./ci/do_ci.sh cmake.plugin
