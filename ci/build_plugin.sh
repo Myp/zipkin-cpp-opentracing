@@ -59,7 +59,7 @@ mkdir zipkin-cpp-opentracing && cd zipkin-cpp-opentracing
 cmake -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX="${BUILD_DIR}" \
       -DBUILD_SHARED_LIBS=OFF \
-      -DBUILD_STATIC=ON \
+      -DBUILD_STATIC=OFF \
       -DBUILD_TESTING=OFF \
       -DBUILD_PLUGIN=ON \
       "${SRC_DIR}"
