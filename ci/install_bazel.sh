@@ -3,7 +3,7 @@
 set -e
 
 #apt-get install --no-install-recommends --no-install-suggests -y \
-yum install -y \
+yum install -y libcurl-devel \
          curl \
          ca-certificates \
          openjdk-8-jdk
